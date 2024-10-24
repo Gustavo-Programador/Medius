@@ -1,0 +1,68 @@
+.header-cidadao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #46dcf0; /* Azul claro */
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .header-buttons button {
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .header-buttons .inactive {
+    background-color: grey;
+    cursor: not-allowed;
+  }
+  
+  .profile-icon {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .profile-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #000;
+  }
+  
+  .dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dropdown button {
+    display: block;
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    color: #000;
+  }
+  

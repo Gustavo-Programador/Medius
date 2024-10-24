@@ -1,0 +1,47 @@
+#benefits {
+  background-color: #fff;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+#benefits h2 {
+  font-size: 2em;
+  margin-bottom: 40px;
+}
+
+#benefits .benefits-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#benefits .benefits-container div {
+  width: 30%;
+  text-align: center;
+}
+
+#benefits .benefits-container div span {
+  font-size: 3em;
+  margin-bottom: 15px;
+  display: block;
+}
+
+#benefits h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+#benefits p {
+  font-size: 1.1em;
+  color: #666;
+}
+
+/* Seção "Como Funciona?" */
+#benefits .how-it-works {
+  margin-top: 80px;
+}
+
+#benefits .how-it-works p {
+  font-size: 1.1em;
+}
