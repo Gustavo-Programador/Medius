@@ -1,6 +1,8 @@
+// src/components/Register.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import './Auth.css';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -13,25 +15,20 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-
+  
     try {
-      const response = await axios.post('http://localhost:3001/api/register', {
+      const response = await axios.post('http://localhost:5000/register', {
         email,
         cpf,
         senha,
         telefone,
-        nomeCompleto,
-        tipoUsuario,
+        nome_completo: nomeCompleto,
+        role: tipoUsuario,
       });
-
+  
       if (response.status === 201) {
-        if (tipoUsuario === 'Juiz') {
-          navigate('/home-juiz');
-        } else if (tipoUsuario === 'Cidadão') {
-          navigate('/home-cidadao');
-        } else if (tipoUsuario === 'Advogado') {
-          navigate('/home-advogado');
-        }
+        const { redirectUrl } = response.data;
+        navigate(redirectUrl); // Redireciona para a página com base no tipo de usuário
       }
     } catch (error) {
       console.error('Erro no registro:', error);
@@ -43,63 +40,29 @@ const Register = () => {
       <h2 className="auth-title">Registro - Sistema Judiciário Digital</h2>
       <form className="auth-form" onSubmit={handleRegister}>
         <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
         <label htmlFor="cpf">CPF:</label>
-        <input
-          type="text"
-          id="cpf"
-          value={cpf}
-          onChange={(e) => setCpf(e.target.value)}
-          required
-        />
+        <input type="text" id="cpf" value={cpf} onChange={(e) => setCpf(e.target.value)} required />
 
         <label htmlFor="telefone">Número de Telefone:</label>
-        <input
-          type="text"
-          id="telefone"
-          value={telefone}
-          onChange={(e) => setTelefone(e.target.value)}
-          required
-        />
+        <input type="text" id="telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} required />
 
         <label htmlFor="nomeCompleto">Nome Completo:</label>
-        <input
-          type="text"
-          id="nomeCompleto"
-          value={nomeCompleto}
-          onChange={(e) => setNomeCompleto(e.target.value)}
-          required
-        />
+        <input type="text" id="nomeCompleto" value={nomeCompleto} onChange={(e) => setNomeCompleto(e.target.value)} required />
 
         <label htmlFor="senha">Senha:</label>
-        <input
-          type="password"
-          id="senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          required
-        />
+        <input type="password" id="senha" value={senha} onChange={(e) => setSenha(e.target.value)} required />
 
         <label>Tipo de Usuário:</label>
-        <select
-          value={tipoUsuario}
-          onChange={(e) => setTipoUsuario(e.target.value)}
-          required
-        >
+        <select value={tipoUsuario} onChange={(e) => setTipoUsuario(e.target.value)} required>
           <option value="">Selecione o tipo de usuário</option>
-          <option value="Juiz">Juiz</option>
-          <option value="Cidadão">Cidadão</option>
-          <option value="Advogado">Advogado</option>
+          <option value="juiz">Juiz</option>
+          <option value="cidadao">Cidadão</option>
+          <option value="empresa_juridica">Empresa Jurídica</option>
         </select>
         
-        <button type="submit">Registrar</button>
+        <button type="submit" className="auth-button">Registrar</button>
       </form>
     </div>
   );

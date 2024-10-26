@@ -4,9 +4,13 @@ import Home from './components/Home/Home';
 import Login from './components/Login&Registro/Login';
 import Register from './components/Login&Registro/Register';
 import HomeJuiz from './components/HomeJuiz/HomeJuiz';
+import ProcessosPendentes from './components/HomeJuiz/ProcessosPendentes';
+import GerenciarAudiencias from './components/HomeJuiz/GerenciarAudiencias';
+import AnalisarDocumentos from './components/HomeJuiz/AnalisarDocumentos';
+import DetalhesConta from './components/HomeJuiz/DetalhesConta';
 import HomeCidadao from './components/HomeCidadao/HomeCidadao';
-import HomeAdvogado from './components/HomeEmpresa/HomeAdvogado';
-import DetalhesConta from './components/HomeCidadao/DetalhesConta';
+import HomeAdvogado from './components/HomeAdvogado/HomeAdvogado';
+
 
 const AppRoutes = () => {
   return (
@@ -18,7 +22,10 @@ const AppRoutes = () => {
         <Route path="/home-juiz" element={<HomeJuiz />} />
         <Route path="/home-cidadao" element={<HomeCidadao />} />
         <Route path="/home-advogado" element={<HomeAdvogado />} />
-        <Route path="/detalhes-conta" element={<DetalhesConta />} />
+        <Route path="/processos" element={<ProcessosPendentes />} />
+        <Route path="/audiencias" element={<GerenciarAudiencias />} />
+        <Route path="/documentos" element={<AnalisarDocumentos />} />
+        <Route path="/detalhes-da-conta" element={<DetalhesConta />} />
         {/* Rota para redirecionar caso nenhuma das rotas acima seja correspondente */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

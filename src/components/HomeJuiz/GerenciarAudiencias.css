@@ -1,0 +1,86 @@
+.gerenciar-audiencias-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f1f3f5;
+    color: #333;
+  }
+  
+  .gerenciar-audiencias-container h2 {
+    font-size: 1.8rem;
+    color: #0056b3;
+    margin-bottom: 20px;
+  }
+  
+  .audiencias-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .audiencias-list div {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    transition: transform 0.2s ease;
+  }
+  
+  .audiencias-list div:hover {
+    transform: scale(1.05);
+  }
+  
+  .audiencias-list h3 {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .audiencias-list p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .add-audiencia {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-audiencia h3 {
+    font-size: 1.5rem;
+    color: #0056b3;
+    margin-bottom: 15px;
+  }
+  
+  .add-audiencia input,
+  .add-audiencia textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .add-audiencia button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .add-audiencia button:hover {
+    background-color: #0056b3;
+  }
+  
