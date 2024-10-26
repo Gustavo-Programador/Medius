@@ -1,0 +1,146 @@
+/* HomeJuiz.css */
+
+.home-juiz-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .home-juiz-header {
+    background-color: #0d47a1;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .home-juiz-header h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .home-juiz-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .home-juiz-nav ul li {
+    margin-left: 20px;
+  }
+  
+  .home-juiz-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .home-juiz-nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .home-juiz-profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  
+  .home-juiz-profile:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .home-juiz-main {
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .home-juiz-main h2 {
+    color: #0d47a1;
+    margin-bottom: 20px;
+  }
+  
+  .home-juiz-main p {
+    color: #333;
+    margin-bottom: 40px;
+  }
+  
+  .home-juiz-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .action-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+  }
+  
+  .action-card h3 {
+    color: #0d47a1;
+    margin-bottom: 10px;
+  }
+  
+  .action-card p {
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .action-button {
+    background-color: #0d47a1;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .action-button:hover {
+    background-color: #08306b;
+  }
+  
+  .home-juiz-footer {
+    background-color: #0d47a1;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  

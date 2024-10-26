@@ -1,0 +1,82 @@
+/* Home.css */
+
+.home-container {
+    font-family: Arial, sans-serif;
+  }
+  
+  .home-header {
+    background-color: #0d47a1;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .home-header h1 {
+    margin: 0;
+  }
+  
+  .home-header nav button {
+    background-color: white;
+    color: #0d47a1;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .hero-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #f0f0f0;
+  }
+  
+  .hero-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .hero-section p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  .hero-buttons button {
+    margin: 10px;
+    padding: 15px 30px;
+    background-color: #0d47a1;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .features-section, .benefits-section {
+    padding: 40px;
+    background-color: white;
+    text-align: center;
+  }
+  
+  .features-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .features-section ul li {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .home-footer {
+    background-color: #0d47a1;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .home-footer nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
