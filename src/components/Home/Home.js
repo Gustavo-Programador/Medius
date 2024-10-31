@@ -23,7 +23,7 @@ const Home = () => {
         <div className="hero-buttons">
           <button onClick={() => navigate('/login')}>Acessar como Cidadão</button>
           <button onClick={() => navigate('/login')}>Acessar como Juiz</button>
-          <button onClick={() => navigate('/login')}>Acessar como Empresa Jurídica</button>
+          <button onClick={() => navigate('/login')}>Acessar como Promotor</button>
         </div>
       </section>
 

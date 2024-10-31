@@ -1,46 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import './AnalisarDocumentos.css';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
 
-const AnalisarDocumentos = () => {
-  const [documents, setDocuments] = useState([]);
-  const [selectedDocument, setSelectedDocument] = useState(null);
+const AnalisarDocumentos = ({ processoId }) => {
+  const [documentos, setDocumentos] = useState([]);
 
   useEffect(() => {
-    // Função para buscar documentos do banco de dados ou API
-    const fetchDocuments = async () => {
-      // Código para buscar documentos
+    const fetchDocumentos = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/processos/${processoId}/documentos`);
+        setDocumentos(response.data);
+      } catch (err) {
+        console.error("Erro ao buscar documentos:", err);
+      }
     };
-    fetchDocuments();
-  }, []);
-
-  const handleApprove = (documentId) => {
-    // Lógica para aprovar o documento
-  };
-
-  const handleReject = (documentId) => {
-    // Lógica para rejeitar o documento
-  };
+    fetchDocumentos();
+  }, [processoId]);
 
   return (
     <div className="analisar-documentos-container">
-      <h2>Analisar Documentos</h2>
-      <div className="document-list">
-        {documents.map(doc => (
-          <div key={doc.id} onClick={() => setSelectedDocument(doc)}>
-            <h3>{doc.title}</h3>
-            <p>{doc.summary}</p>
-          </div>
-        ))}
-      </div>
-
-      {selectedDocument && (
-        <div className="document-details">
-          <h3>{selectedDocument.title}</h3>
-          <p>{selectedDocument.content}</p>
-          <button onClick={() => handleApprove(selectedDocument.id)}>Aprovar</button>
-          <button onClick={() => handleReject(selectedDocument.id)}>Rejeitar</button>
-        </div>
-      )}
+      <h1>Documentos do Processo</h1>
+      
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Nome do Documento</TableCell>
+              <TableCell>Data de Upload</TableCell>
+              <TableCell>Ações</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {documentos.map((documento) => (
+              <TableRow key={documento.id}>
+                <TableCell>{documento.nome_arquivo}</TableCell>
+                <TableCell>{new Date(documento.data_upload).toLocaleDateString()}</TableCell>
+                <TableCell>
+                  <Button variant="contained" color="primary" onClick={() => window.open(documento.url)}>Visualizar</Button>
+                  <Button variant="outlined" color="secondary" onClick={() => window.open(documento.url, '_blank')}>Baixar</Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 };

@@ -1,68 +1,121 @@
-.header-cidadao {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #ffffff; 
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #000;
-  }
-  
-  .header-buttons {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .header-buttons button {
-    padding: 10px 20px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .header-buttons .inactive {
-    background-color: grey;
-    cursor: not-allowed;
-  }
-  
-  .profile-icon {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .profile-icon img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid #000;
-  }
-  
-  .dropdown {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .dropdown button {
-    display: block;
-    background: none;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    color: #000;
-  }
-  
+/* HomeCidadao.css */
+
+.home-cidadao-container {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.home-cidadao-header {
+  background-color: #0d47a1;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+}
+
+.home-cidadao-header h1 {
+  margin: 0;
+}
+
+.menu-hamburguer {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #0d47a1;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.menu-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-dropdown li {
+  margin-bottom: 5px;
+}
+
+.menu-dropdown li button {
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.menu-toggle:checked + .menu-icon + .menu-dropdown {
+  display: block;
+}
+
+.home-cidadao-main {
+  padding: 20px;
+  text-align: center;
+}
+
+.home-cidadao-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.action-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  text-align: left;
+}
+
+.action-card h3 {
+  color: #0d47a1;
+}
+
+.action-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.action-button {
+  background-color: #0d47a1;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+.action-button:hover {
+  background-color: #08306b;
+}
+
+.home-cidadao-footer {
+  background-color: #f1f1f1;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+}

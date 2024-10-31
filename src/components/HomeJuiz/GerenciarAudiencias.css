@@ -1,86 +1,111 @@
 .gerenciar-audiencias-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #f1f3f5;
-    color: #333;
-  }
-  
-  .gerenciar-audiencias-container h2 {
-    font-size: 1.8rem;
-    color: #0056b3;
-    margin-bottom: 20px;
-  }
-  
-  .audiencias-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .audiencias-list div {
-    background: #ffffff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    transition: transform 0.2s ease;
-  }
-  
-  .audiencias-list div:hover {
-    transform: scale(1.05);
-  }
-  
-  .audiencias-list h3 {
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  .audiencias-list p {
-    font-size: 0.9rem;
-    color: #555;
-  }
-  
-  .add-audiencia {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .add-audiencia h3 {
-    font-size: 1.5rem;
-    color: #0056b3;
-    margin-bottom: 15px;
-  }
-  
-  .add-audiencia input,
-  .add-audiencia textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  .add-audiencia button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .add-audiencia button:hover {
-    background-color: #0056b3;
-  }
-  
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #eef2f7;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #1f4b99;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.calendar-container {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.audiencia-dot {
+  background-color: #1f4b99;
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+  display: inline-block;
+}
+
+.audiencia-form {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+}
+
+.audiencia-form h2 {
+  color: #1f4b99;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.audiencia-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.audiencia-form input,
+.audiencia-form textarea,
+.audiencia-form select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.audiencia-form input:focus,
+.audiencia-form textarea:focus,
+.audiencia-form select:focus {
+  border-color: #1f4b99;
+  outline: none;
+}
+
+.audiencia-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.error-message {
+  color: #d9534f;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.success-message {
+  color: #5cb85c;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.agendar-btn {
+  width: 100%;
+  background-color: #1f4b99;
+  color: #ffffff;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.agendar-btn:hover {
+  background-color: #163d7a;
+}

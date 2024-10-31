@@ -29,11 +29,17 @@ const Register = () => {
       const response = await axios.post("http://localhost:5000/register", userData);
 
       if (response.status === 201) {
-        const { redirectUrl, userId } = response.data;
+        const { userId } = response.data;
 
         // Salva o userId no localStorage após o registro bem-sucedido
         localStorage.setItem("usuarioLogado", JSON.stringify({ userId }));
-        navigate(redirectUrl); // Redireciona para a página com base no tipo de usuário
+
+        // Redireciona para a página com base no tipo de usuário
+        if (tipoUsuario === 'promotor') {
+          navigate('/home-promotor'); // ajuste para rota associada ao Promotor
+        } else {
+          navigate('/home'); // ajuste para rota padrão
+        }
       }
     } catch (error) {
       console.error('Erro no registro:', error);
@@ -64,7 +70,7 @@ const Register = () => {
           <option value="">Selecione o tipo de usuário</option>
           <option value="juiz">Juiz</option>
           <option value="cidadao">Cidadão</option>
-          <option value="empresa_juridica">Empresa Jurídica</option>
+          <option value="promotor">Promotor</option>
         </select>
 
         <button type="submit" className="auth-button">Registrar</button>

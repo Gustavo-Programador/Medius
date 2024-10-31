@@ -10,12 +10,15 @@ const HomeJuiz = () => {
     navigate('/'); // Redireciona para a página inicial
   };
 
+  const handleAccessAudiences = () => {
+    navigate('/audiencias'); // Navegação correta para a rota definida no routes.js
+  };
+
   return (
     <div className="home-juiz-container">
       <header className="home-juiz-header">
         <h1>Sistema Judiciário Digital</h1>
 
-        {/* Menu Hambúrguer */}
         <div className="menu-hamburguer">
           <input type="checkbox" id="menu-toggle" className="menu-toggle" />
           <label htmlFor="menu-toggle" className="menu-icon">&#9776;</label>
@@ -32,29 +35,28 @@ const HomeJuiz = () => {
         <h2>Bem-vindo, Juiz!</h2>
         <p>
           No Sistema Judiciário Digital, você tem acesso rápido e seguro às ferramentas
-          essenciais para o gerenciamento de processos e audiências. Nossa plataforma foi
-          projetada para otimizar o tempo e melhorar a produtividade.
+          essenciais para o gerenciamento de processos e audiências.
         </p>
 
         <section className="home-juiz-actions">
           <div className="action-card">
-            <h3>Gerenciar Audiências</h3>
-            <p>Visualize, agende ou cancele audiências diretamente pela plataforma.</p>
-            <a href="/audiencias" className="action-button">Acessar</a>
+            <h3>Painel de Audiências</h3>
+            <p>Visualize, agende ou gerencie suas audiências de maneira prática.</p>
+            <button onClick={handleAccessAudiences} className="action-button">Acessar Audiências</button>
           </div>
 
           <div className="action-card">
             <h3>Processos Pendentes</h3>
-            <p>Acompanhe todos os processos que precisam de sua análise.</p>
-            <a href="/processos" className="action-button">Acessar</a>
+            <p>Acompanhe todos os processos em que você é o responsável.</p>
+            <button onClick={() => navigate('/processos')} className="action-button">Acessar Processos</button>
           </div>
 
           <div className="action-card">
-            <h3>Documentos</h3>
-            <p>Envie, revise e gerencie documentos de forma segura e integrada.</p>
-            <a href="/documentos" className="action-button">Acessar</a>
+            <h3>Documentos e Movimentações</h3>
+            <p>Revise e atualize documentos associados aos processos.</p>
+            <button onClick={() => navigate('/documentos')} className="action-button">Acessar Documentos</button>
           </div>
-          
+
           <div className="action-card">
             <h3>Notificações</h3>
             <p>Receba notificações importantes sobre prazos e atualizações em tempo real.</p>
@@ -64,7 +66,7 @@ const HomeJuiz = () => {
         <section className="resources-section">
           <h3>Central de Ajuda e Documentação</h3>
           <p>
-            Encontre guias e manuais que explicam cada funcionalidade em detalhes para aproveitar ao máximo as ferramentas do sistema.
+            Encontre guias e manuais que explicam cada funcionalidade em detalhes.
           </p>
         </section>
       </main>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './HomeCidadao.css';
+import './HomePromotor.css';
 
-const HomeCidadao = () => {
+const HomePromotor = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -10,21 +10,21 @@ const HomeCidadao = () => {
   };
 
   const handleAccessProcesses = () => {
-    navigate('/processos-cidadao'); // Rota para visualizar os processos do cidadão
+    navigate('/processos'); // Navegação para a rota de processos
   };
 
   const handleAccessDocuments = () => {
-    navigate('/documentos-cidadao'); // Rota para visualizar documentos do cidadão
+    navigate('/documentos-promotor'); // Rota específica de documentos do Promotor
   };
 
   const handleAccessAudiences = () => {
-    navigate('/audiencias-cidadao'); // Rota para visualizar audiências do cidadão
+    navigate('/audiencias-promotor'); // Rota específica de audiências do Promotor
   };
 
   return (
-    <div className="home-cidadao-container">
-      <header className="home-cidadao-header">
-        <h1>Sistema Judiciário Digital - Cidadão</h1>
+    <div className="home-promotor-container">
+      <header className="home-promotor-header">
+        <h1>Sistema Judiciário Digital - Promotor</h1>
         <div className="menu-hamburguer">
           <input type="checkbox" id="menu-toggle" className="menu-toggle" />
           <label htmlFor="menu-toggle" className="menu-icon">&#9776;</label>
@@ -37,34 +37,34 @@ const HomeCidadao = () => {
         </div>
       </header>
 
-      <main className="home-cidadao-main">
-        <h2>Bem-vindo, Cidadão!</h2>
-        <section className="home-cidadao-actions">
+      <main className="home-promotor-main">
+        <h2>Bem-vindo, Promotor!</h2>
+        <section className="home-promotor-actions">
           <div className="action-card">
             <h3>Processos</h3>
-            <p>Acompanhe seus processos e atualizações importantes.</p>
+            <p>Visualize e gerencie os processos em que está envolvido.</p>
             <button onClick={handleAccessProcesses} className="action-button">Acessar Processos</button>
           </div>
 
           <div className="action-card">
             <h3>Documentos e Provas</h3>
-            <p>Visualize e faça o download de documentos relevantes.</p>
+            <p>Envie e acesse documentos e evidências importantes.</p>
             <button onClick={handleAccessDocuments} className="action-button">Acessar Documentos</button>
           </div>
 
           <div className="action-card">
             <h3>Calendário de Audiências</h3>
-            <p>Consulte datas de audiências e opções de participação remota.</p>
+            <p>Veja as audiências programadas e gerencie sugestões de datas.</p>
             <button onClick={handleAccessAudiences} className="action-button">Acessar Audiências</button>
           </div>
         </section>
       </main>
 
-      <footer className="home-cidadao-footer">
+      <footer className="home-promotor-footer">
         <p>&copy; 2024 Sistema Judiciário Digital - Todos os direitos reservados.</p>
       </footer>
     </div>
   );
 };
 
-export default HomeCidadao;
+export default HomePromotor;

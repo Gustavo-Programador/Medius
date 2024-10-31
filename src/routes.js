@@ -9,7 +9,11 @@ import GerenciarAudiencias from './components/HomeJuiz/GerenciarAudiencias';
 import AnalisarDocumentos from './components/HomeJuiz/AnalisarDocumentos';
 import DetalhesConta from './components/HomeJuiz/DetalhesConta';
 import HomeCidadao from './components/HomeCidadao/HomeCidadao';
-import HomeAdvogado from './components/HomeAdvogado/HomeAdvogado';
+import HomePromotor from './components/HomePromotor/HomePromotor';
+import AudienciasPromotor from './components/HomePromotor/AudienciasPromotor';
+import CalendarioPromotor from './components/HomePromotor/CalendarioPromotor';
+import DocumentosPromotor from './components/HomePromotor/DocumentosPromotor';
+
 
 
 const AppRoutes = () => {
@@ -21,11 +25,14 @@ const AppRoutes = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/home-juiz" element={<HomeJuiz />} />
         <Route path="/home-cidadao" element={<HomeCidadao />} />
-        <Route path="/home-advogado" element={<HomeAdvogado />} />
+        <Route path="/home-promotor" element={<HomePromotor />} />
         <Route path="/processos" element={<ProcessosPendentes />} />
         <Route path="/audiencias" element={<GerenciarAudiencias />} />
         <Route path="/documentos" element={<AnalisarDocumentos />} />
         <Route path="/detalhes-da-conta" element={<DetalhesConta />} />
+        <Route path="/documentos-promotor" element={<DocumentosPromotor />} />
+        <Route path="/audiencias-promotor" element={<AudienciasPromotor />} />
+        <Route path="/calendario-promotor" element={<CalendarioPromotor />} />
         {/* Rota para redirecionar caso nenhuma das rotas acima seja correspondente */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

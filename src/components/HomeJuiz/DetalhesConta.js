@@ -8,7 +8,6 @@ const DetalhesConta = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isEditingPassword, setIsEditingPassword] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -61,10 +60,7 @@ const DetalhesConta = () => {
             <div className="detalhe-item"><strong>Nome Completo:</strong> <span>{userData.nome_completo}</span></div>
             <div className="detalhe-item">
               <strong>Senha:</strong> 
-              <span>{showPassword ? userData.senha : "******"}</span>
-              <button onClick={() => setShowPassword(!showPassword)} className="toggle-password-btn">
-                {showPassword ? "Ocultar Senha" : "Mostrar Senha"}
-              </button>
+              <span>******</span>
               <button onClick={() => setIsEditingPassword(!isEditingPassword)} className="edit-password-btn">Alterar Senha</button>
             </div>
             {isEditingPassword && (
