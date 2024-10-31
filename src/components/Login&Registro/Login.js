@@ -11,15 +11,19 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await axios.post('http://localhost:5000/login', {
         email,
         senha,
       });
-  
+
       if (response.status === 200) {
-        const { redirectUrl } = response.data;
+        const { redirectUrl, userId } = response.data;
+
+        // Salva o userId no localStorage para ser usado na página de detalhes
+        localStorage.setItem("usuarioLogado", JSON.stringify({ userId }));
+
         navigate(redirectUrl); // Redireciona para a página com base no tipo de usuário
       }
     } catch (error) {

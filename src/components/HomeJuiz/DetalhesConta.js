@@ -1,123 +1,89 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import './DetalhesConta.css';
 
 const DetalhesConta = () => {
-  const [userData, setUserData] = useState(null); // Dados do usuário
-  const [senhaAntiga, setSenhaAntiga] = useState('');
-  const [novaSenha, setNovaSenha] = useState('');
-  const [mensagemErro, setMensagemErro] = useState('');
-  const [mensagemSucesso, setMensagemSucesso] = useState('');
-  const navigate = useNavigate();
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [isEditingPassword, setIsEditingPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  // Fetch para obter dados do usuário autenticado
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('/api/usuario', {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`, // Token JWT no header
-          },
-        });
-        const data = await response.json();
+        const userId = JSON.parse(localStorage.getItem('usuarioLogado')).userId;
+        if (!userId) throw new Error('ID do usuário não encontrado no localStorage.');
 
-        if (response.ok) {
-          setUserData(data); // Definir dados do usuário se tudo estiver OK
-        } else {
-          setMensagemErro(data.error || 'Erro ao carregar os dados do usuário');
-        }
-      } catch (error) {
-        setMensagemErro('Erro ao buscar dados do usuário.');
+        const response = await axios.get(`http://localhost:5000/api/usuario/${userId}`);
+        setUserData(response.data);
+      } catch (err) {
+        console.error('Erro ao buscar dados do usuário:', err);
+        setError('Erro ao buscar dados do usuário.');
       }
     };
-
+    
     fetchUserData();
   }, []);
 
-  // Função para alterar senha
-  const handleAlterarSenha = async (e) => {
-    e.preventDefault();
-    setMensagemErro('');
-    setMensagemSucesso('');
-
+  const handlePasswordChange = async () => {
+    if (newPassword !== confirmPassword) {
+      setError("As senhas não coincidem.");
+      return;
+    }
     try {
-      const response = await fetch('/api/usuario/alterar-senha', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-        body: JSON.stringify({ senhaAntiga, novaSenha }),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        setMensagemErro(result.error || 'Erro ao alterar a senha');
-      } else {
-        setMensagemSucesso('Senha alterada com sucesso!');
-        setSenhaAntiga('');
-        setNovaSenha('');
-      }
-    } catch (error) {
-      setMensagemErro('Erro ao alterar a senha.');
+      const userId = JSON.parse(localStorage.getItem('usuarioLogado')).userId;
+      await axios.put(`http://localhost:5000/api/usuario/${userId}/senha`, { senha: newPassword });
+      setError("Senha atualizada com sucesso!");
+      setIsEditingPassword(false);
+      setNewPassword('');
+      setConfirmPassword('');
+    } catch (err) {
+      console.error("Erro ao atualizar senha:", err);
+      setError("Erro ao atualizar senha.");
     }
   };
 
-  // Função de logout
-  const handleLogout = () => {
-    localStorage.removeItem('token'); // Remove o token do localStorage
-    navigate('/'); // Redireciona para a Home
-  };
-
-  if (!userData) {
-    return <p>Carregando...</p>;
-  }
-
   return (
     <div className="detalhes-conta-container">
+      <div className="titulo-container">
+        <h1 className="detalhes-conta-title">Detalhes da Conta</h1>
+      </div>
+      
       <div className="detalhes-conta-content">
-        <h2>Detalhes da Conta</h2>
-        <div className="detalhe-item">
-          <strong>Nome Completo:</strong> <span>{userData.nome_completo}</span>
-        </div>
-        <div className="detalhe-item">
-          <strong>Email:</strong> <span>{userData.email}</span>
-        </div>
-        <div className="detalhe-item">
-          <strong>CPF:</strong> <span>{userData.cpf}</span>
-        </div>
-        <div className="detalhe-item">
-          <strong>Telefone:</strong> <span>{userData.telefone}</span>
-        </div>
-
-        <h3>Alterar Senha</h3>
-        <form onSubmit={handleAlterarSenha}>
-          <div className="form-group">
-            <label>Senha Antiga:</label>
-            <input
-              type="password"
-              value={senhaAntiga}
-              onChange={(e) => setSenhaAntiga(e.target.value)}
-              required
-            />
+        {error && <p className="error-message">{error}</p>}
+        {userData ? (
+          <div className="detalhes-info">
+            <div className="detalhe-item"><strong>Email:</strong> <span>{userData.email}</span></div>
+            <div className="detalhe-item"><strong>CPF:</strong> <span>{userData.cpf}</span></div>
+            <div className="detalhe-item"><strong>Telefone:</strong> <span>{userData.telefone}</span></div>
+            <div className="detalhe-item"><strong>Nome Completo:</strong> <span>{userData.nome_completo}</span></div>
+            <div className="detalhe-item">
+              <strong>Senha:</strong> 
+              <span>{showPassword ? userData.senha : "******"}</span>
+              <button onClick={() => setShowPassword(!showPassword)} className="toggle-password-btn">
+                {showPassword ? "Ocultar Senha" : "Mostrar Senha"}
+              </button>
+              <button onClick={() => setIsEditingPassword(!isEditingPassword)} className="edit-password-btn">Alterar Senha</button>
+            </div>
+            {isEditingPassword && (
+              <div className="password-change-form">
+                <label>Nova Senha:</label>
+                <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
+                <label>Confirme a Nova Senha:</label>
+                <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                <button onClick={handlePasswordChange} className="save-password-btn">Salvar</button>
+              </div>
+            )}
           </div>
-          <div className="form-group">
-            <label>Nova Senha:</label>
-            <input
-              type="password"
-              value={novaSenha}
-              onChange={(e) => setNovaSenha(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit">Alterar Senha</button>
-        </form>
+        ) : (
+          <p>Carregando...</p>
+        )}
+      </div>
 
-        {mensagemErro && <p className="erro">{mensagemErro}</p>}
-        {mensagemSucesso && <p className="sucesso">{mensagemSucesso}</p>}
-
-        <button onClick={handleLogout}>Sair</button>
+      <div className="voltar-container">
+        <button onClick={() => window.history.back()} className="back-button">Voltar</button>
       </div>
     </div>
   );

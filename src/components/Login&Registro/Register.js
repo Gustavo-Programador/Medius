@@ -15,19 +15,24 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-  
+
+    const userData = {
+      nome_completo: nomeCompleto,
+      email,
+      cpf,
+      telefone,
+      senha,
+      role: tipoUsuario,
+    };
+
     try {
-      const response = await axios.post('http://localhost:5000/register', {
-        email,
-        cpf,
-        senha,
-        telefone,
-        nome_completo: nomeCompleto,
-        role: tipoUsuario,
-      });
-  
+      const response = await axios.post("http://localhost:5000/register", userData);
+
       if (response.status === 201) {
-        const { redirectUrl } = response.data;
+        const { redirectUrl, userId } = response.data;
+
+        // Salva o userId no localStorage após o registro bem-sucedido
+        localStorage.setItem("usuarioLogado", JSON.stringify({ userId }));
         navigate(redirectUrl); // Redireciona para a página com base no tipo de usuário
       }
     } catch (error) {
@@ -61,7 +66,7 @@ const Register = () => {
           <option value="cidadao">Cidadão</option>
           <option value="empresa_juridica">Empresa Jurídica</option>
         </select>
-        
+
         <button type="submit" className="auth-button">Registrar</button>
       </form>
     </div>
