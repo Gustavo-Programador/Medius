@@ -7,111 +7,75 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* Header */}
+      {/* Cabeçalho */}
       <header className="home-header">
-        <h1>Sistema Judiciário Digital</h1>
+        <h1>Plataforma de Gestão Judicial</h1>
         <nav>
           <button onClick={() => navigate('/login')}>Login</button>
           <button onClick={() => navigate('/register')}>Cadastro</button>
         </nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="hero-section">
-        <h2>Transformando a Justiça com Inovação Digital</h2>
-        <p>Facilitando o acesso à justiça para cidadãos, advogados e juízes através de tecnologia eficiente e segura.</p>
-        <div className="hero-buttons">
-          <button onClick={() => navigate('/login')}>Acessar como Cidadão</button>
+      {/* Seção de Introdução */}
+      <section className="intro-section">
+        <h2>Inovação e Eficiência para o Sistema Judicial</h2>
+        <p>Uma plataforma dedicada a juízes e funcionários públicos, projetada para agilizar e organizar a gestão de processos e documentos judiciais.</p>
+        <div className="intro-buttons">
           <button onClick={() => navigate('/login')}>Acessar como Juiz</button>
-          <button onClick={() => navigate('/login')}>Acessar como Promotor</button>
+          <button onClick={() => navigate('/login')}>Acessar como Funcionário</button>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Seção de Funcionalidades */}
       <section className="features-section">
-        <h3>Principais Funcionalidades</h3>
+        <h3>Funcionalidades Principais</h3>
         <ul>
-          <li>Gestão de Processos Judiciais</li>
-          <li>Envio e Recebimento de Documentos</li>
-          <li>Notificações Automáticas por E-mail e SMS</li>
-          <li>Segurança e Criptografia de Dados</li>
-          <li>Gerenciamento de Audiências</li>
+          <li>Gestão de Processos e Audiências</li>
+          <li>Consulta e Análise de Documentos</li>
+          <li>Notificações Automáticas e Atualizações de Prazo</li>
+          <li>Controle de Segurança e Criptografia</li>
         </ul>
       </section>
 
-      {/* User Profiles Section */}
+      {/* Seção de Perfis de Usuário */}
       <section className="user-profiles-section">
-        <h3>Como o Sistema Judiciário Digital Ajuda Cada Perfil de Usuário</h3>
+        <h3>Benefícios para Juízes e Funcionários Públicos</h3>
         <div className="profile">
           <h4>Para Juízes:</h4>
-          <p>Visualize processos, organize audiências, revise documentos e mantenha comunicação com promotores e cidadãos.</p>
+          <p>Acesso facilitado aos processos, ferramentas de gerenciamento de audiências e comunicação direta com os funcionários.</p>
         </div>
         <div className="profile">
-          <h4>Para Promotores:</h4>
-          <p>Acompanhe processos, envie documentos e comunique-se com juízes de maneira prática e organizada.</p>
-        </div>
-        <div className="profile">
-          <h4>Para Cidadãos:</h4>
-          <p>Acompanhe processos, receba notificações e envie documentos diretamente pela plataforma.</p>
+          <h4>Para Funcionários Públicos:</h4>
+          <p>Organização de documentos e processos, notificações automáticas e facilidades para suporte jurídico.</p>
         </div>
       </section>
 
-      {/* Step-by-Step Guide */}
-      <section className="step-by-step-section">
-        <h3>Como Usar o Sistema Judiciário Digital</h3>
-        <div className="step">
-          <h4>1. Cadastro</h4>
-          <p>Registre-se com informações básicas, garantindo segurança e proteção de dados.</p>
-        </div>
-        <div className="step">
-          <h4>2. Acesso ao Painel</h4>
-          <p>Veja o painel personalizado para seu perfil de usuário, com acesso rápido a processos e documentos.</p>
-        </div>
-        <div className="step">
-          <h4>3. Gerenciamento de Documentos</h4>
-          <p>Envie, receba e visualize documentos com facilidade e segurança.</p>
-        </div>
-        <div className="step">
-          <h4>4. Notificações e Alertas</h4>
-          <p>Mantenha-se atualizado com notificações automáticas sobre novas movimentações e prazos importantes.</p>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="testimonials-section">
-        <h3>O que nossos usuários dizem</h3>
-        <blockquote>"A organização de processos nunca foi tão fácil!" - Juíza Maria S.</blockquote>
-        <blockquote>"Um sistema completo que facilita o trabalho do promotor." - Promotor João P.</blockquote>
-        <blockquote>"Simples e acessível para acompanhar processos!" - Cidadão Ana M.</blockquote>
-      </section>
-
-      {/* Technical and Security Section */}
+      {/* Seção de Segurança */}
       <section className="security-section">
         <h3>Segurança e Confiabilidade</h3>
-        <p>Utilizamos autenticação JWT e criptografia de ponta a ponta para garantir que seus dados estejam sempre seguros.</p>
-        <p>Compatível com dispositivos móveis e computadores para um uso acessível em qualquer plataforma.</p>
+        <p>Implementação de autenticação JWT e criptografia avançada para garantir a proteção de dados e um ambiente seguro para a gestão judicial.</p>
       </section>
 
-      {/* FAQ Section */}
+      {/* Perguntas Frequentes */}
       <section className="faq-section">
         <h3>Perguntas Frequentes</h3>
         <div className="faq">
           <h4>Como faço o cadastro?</h4>
-          <p>Você pode realizar o cadastro na página inicial, fornecendo suas informações básicas.</p>
+          <p>Utilize a opção de cadastro na tela inicial, fornecendo suas credenciais profissionais.</p>
         </div>
         <div className="faq">
-          <h4>É seguro utilizar o sistema?</h4>
-          <p>Sim, todos os dados são protegidos com criptografia e autenticação segura.</p>
+          <h4>Posso acessar a plataforma de qualquer dispositivo?</h4>
+          <p>Sim, a plataforma é compatível com computadores e dispositivos móveis.</p>
         </div>
         <div className="faq">
-          <h4>Como recuperar minha senha?</h4>
-          <p>Vá até a página de login e clique em "Esqueceu a senha?" para instruções de recuperação.</p>
+          <h4>Como recuperar meu acesso?</h4>
+          <p>Clique em "Esqueceu a senha?" na tela de login para recuperação.</p>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Rodapé */}
       <footer className="home-footer">
-        <p>© 2024 Sistema Judiciário Digital - Todos os direitos reservados.</p>
+        <p>© 2024 Plataforma de Gestão Judicial - Todos os direitos reservados.</p>
         <nav>
           <a href="/politica-privacidade">Política de Privacidade</a>
           <a href="/termos-uso">Termos de Uso</a>

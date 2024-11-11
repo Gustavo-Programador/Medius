@@ -1,170 +1,170 @@
-.home-container {
-  font-family: Arial, sans-serif;
-  color: #333;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+/* Home.css */
+
+:root {
+  --azul-brasil: #003366; /* Azul escuro para áreas de destaque */
+  --verde-brasil: #006633; /* Verde para detalhes secundários */
+  --cinza-escuro: #444444; /* Cinza escuro para texto */
+  --branco: #ffffff; /* Fundo claro neutro */
+  --cinza-claro: #f0f2f5; /* Cinza claro para fundos de seção */
+  --cinza-borda: #cccccc; /* Cinza claro para bordas de botão */
 }
 
+.home-container {
+  font-family: Arial, sans-serif;
+  color: var(--cinza-escuro);
+  line-height: 1.6;
+  background-color: var(--cinza-claro);
+}
+
+/* Cabeçalho */
 .home-header {
-  background-color: #1f4b99;
-  color: #fff;
-  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px;
+  background-color: var(--azul-brasil);
+  color: var(--branco);
 }
 
 .home-header h1 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
 .home-header nav button {
-  background-color: #fff;
-  color: #1f4b99;
-  border: none;
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
-  border-radius: 4px;
+  margin-left: 15px;
+  padding: 10px 20px;
+  background-color: var(--branco);
+  color: var(--azul-brasil);
+  border: 2px solid var(--azul-brasil);
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.hero-section {
+.home-header nav button:hover {
+  background-color: var(--azul-brasil);
+  color: var(--branco);
+}
+
+/* Seção de Introdução */
+.intro-section {
   text-align: center;
-  padding: 2rem 1rem;
-  background-color: #f0f4ff;
+  padding: 40px 20px;
+  background-color: var(--branco);
 }
 
-.hero-section h2 {
+.intro-section h2 {
   font-size: 2rem;
-  margin-bottom: 0.5rem;
+  color: var(--azul-brasil);
+  margin-bottom: 10px;
 }
 
-.hero-section p {
-  color: #666;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
+.intro-section p {
+  font-size: 1.1rem;
+  color: var(--cinza-escuro);
+  margin-bottom: 20px;
 }
 
-.hero-buttons button {
-  background-color: #1f4b99;
-  color: #fff;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  margin: 0.5rem;
-  border-radius: 4px;
+.intro-buttons button {
+  margin: 10px;
+  padding: 10px 25px;
+  background-color: var(--branco);
+  color: var(--azul-brasil);
+  border: 2px solid var(--azul-brasil);
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.intro-buttons button:hover {
+  background-color: var(--azul-brasil);
+  color: var(--branco);
+}
+
+/* Seção de Funcionalidades */
 .features-section {
-  background-color: #fff;
-  padding: 2rem;
-  text-align: center;
+  padding: 30px 20px;
+  background-color: var(--cinza-claro);
 }
 
 .features-section h3 {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  color: var(--azul-brasil);
+  margin-bottom: 15px;
 }
 
 .features-section ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .features-section li {
-  font-size: 1.1rem;
-  color: #444;
-  margin: 0.5rem 0;
+  padding: 10px;
+  background-color: var(--branco);
+  margin: 5px 0;
+  border-left: 5px solid var(--azul-brasil);
+  border-radius: 3px;
 }
 
+/* Seção de Perfis de Usuário */
 .user-profiles-section {
-  padding: 2rem;
-  background-color: #eef2ff;
+  padding: 30px 20px;
+  background-color: var(--branco);
 }
 
-.user-profiles-section h3 {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+.user-profiles-section .profile {
+  margin-bottom: 20px;
 }
 
-.profile {
-  margin: 1rem 0;
-}
-
-.profile h4 {
+.user-profiles-section h4 {
   font-size: 1.2rem;
-  color: #1f4b99;
+  color: var(--azul-brasil);
 }
 
-.profile p {
-  font-size: 1rem;
-  color: #444;
-}
-
-.home-footer {
-  background-color: #1f4b99;
-  color: #fff;
-  padding: 1rem;
+/* Seção de Segurança */
+.security-section {
+  padding: 30px 20px;
+  background-color: var(--cinza-claro);
   text-align: center;
+}
+
+.security-section h3 {
+  font-size: 1.5rem;
+  color: var(--azul-brasil);
+}
+
+/* Perguntas Frequentes */
+.faq-section {
+  padding: 30px 20px;
+  background-color: var(--branco);
+}
+
+.faq-section h3 {
+  font-size: 1.5rem;
+  color: var(--azul-brasil);
+  margin-bottom: 15px;
+}
+
+.faq-section .faq h4 {
+  font-size: 1.1rem;
+  color: var(--azul-brasil);
+}
+
+/* Rodapé */
+.home-footer {
+  background-color: var(--azul-brasil);
+  color: var(--branco);
+  text-align: center;
+  padding: 20px;
 }
 
 .home-footer nav a {
-  color: #fff;
-  margin: 0 1rem;
+  color: var(--cinza-claro);
+  margin: 0 10px;
   text-decoration: none;
 }
 
 .home-footer nav a:hover {
-  text-decoration: underline;
-}
-
-.step-by-step-section, .testimonials-section, .security-section, .faq-section {
-  padding: 2rem;
-  background-color: #f0f4ff;
-  text-align: center;
-}
-
-.step-by-step-section h3,
-.testimonials-section h3,
-.security-section h3,
-.faq-section h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.step {
-  margin: 1rem 0;
-}
-
-.step h4 {
-  font-size: 1.2rem;
-  color: #1f4b99;
-}
-
-.testimonials-section blockquote {
-  font-style: italic;
-  color: #555;
-  margin: 1rem 0;
-}
-
-.security-section p,
-.faq-section p {
-  font-size: 1rem;
-  color: #444;
-}
-
-.faq h4 {
-  font-size: 1.2rem;
-  color: #1f4b99;
-  margin-bottom: 0.5rem;
-}
-
-.faq {
-  margin-bottom: 1rem;
+  color: var(--branco);
 }

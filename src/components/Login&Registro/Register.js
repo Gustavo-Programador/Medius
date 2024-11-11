@@ -1,80 +1,130 @@
-// src/components/Register.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import './Auth.css';
 
 const Register = () => {
-  const [email, setEmail] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [senha, setSenha] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [nomeCompleto, setNomeCompleto] = useState('');
-  const [tipoUsuario, setTipoUsuario] = useState('');
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    cpf: '',
+    password: '',
+    confirmPassword: '',
+    role: ''
+  });
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [id]: value }));
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    const userData = {
-      nome_completo: nomeCompleto,
-      email,
-      cpf,
-      telefone,
-      senha,
-      role: tipoUsuario,
-    };
+    if (formData.password !== formData.confirmPassword) {
+      setError('As senhas não coincidem');
+      return;
+    }
 
     try {
-      const response = await axios.post("http://localhost:5000/register", userData);
+      const response = await fetch('http://localhost:5000/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: formData.nome,
+          email: formData.email,
+          cpf: formData.cpf,
+          senha: formData.password,
+          role: formData.role,
+        })
+      });
+      const data = await response.json();
 
-      if (response.status === 201) {
-        const { userId } = response.data;
-
-        // Salva o userId no localStorage após o registro bem-sucedido
-        localStorage.setItem("usuarioLogado", JSON.stringify({ userId }));
-
-        // Redireciona para a página com base no tipo de usuário
-        if (tipoUsuario === 'promotor') {
-          navigate('/home-promotor'); // ajuste para rota associada ao Promotor
-        } else {
-          navigate('/home'); // ajuste para rota padrão
-        }
+      if (response.ok) {
+        localStorage.setItem('user', JSON.stringify({
+          nome: formData.nome,
+          email: formData.email,
+          role: formData.role
+        }));
+        navigate('/dashboard');
+      } else {
+        setError(data.error || 'Erro ao cadastrar');
       }
     } catch (error) {
-      console.error('Erro no registro:', error);
+      setError('Erro no servidor. Tente novamente mais tarde.');
+      console.error('Erro ao registrar:', error);
     }
   };
 
   return (
     <div className="auth-container">
-      <h2 className="auth-title">Registro - Sistema Judiciário Digital</h2>
-      <form className="auth-form" onSubmit={handleRegister}>
-        <label htmlFor="email">Email:</label>
-        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+      <h2 className="auth-title">Cadastro de Usuário</h2>
+      <p className="auth-subtitle">Complete o formulário para criar uma nova conta</p>
+      {error && <p className="auth-error">{error}</p>}
+      <form onSubmit={handleRegister} className="auth-form">
+        <label htmlFor="nome">Nome Completo</label>
+        <input
+          type="text"
+          id="nome"
+          value={formData.nome}
+          onChange={handleChange}
+          required
+          placeholder="Digite seu nome completo"
+        />
 
-        <label htmlFor="cpf">CPF:</label>
-        <input type="text" id="cpf" value={cpf} onChange={(e) => setCpf(e.target.value)} required />
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          placeholder="Digite seu email"
+        />
 
-        <label htmlFor="telefone">Número de Telefone:</label>
-        <input type="text" id="telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} required />
+        <label htmlFor="cpf">CPF</label>
+        <input
+          type="text"
+          id="cpf"
+          value={formData.cpf}
+          onChange={handleChange}
+          required
+          placeholder="Digite seu CPF"
+        />
 
-        <label htmlFor="nomeCompleto">Nome Completo:</label>
-        <input type="text" id="nomeCompleto" value={nomeCompleto} onChange={(e) => setNomeCompleto(e.target.value)} required />
-
-        <label htmlFor="senha">Senha:</label>
-        <input type="password" id="senha" value={senha} onChange={(e) => setSenha(e.target.value)} required />
-
-        <label>Tipo de Usuário:</label>
-        <select value={tipoUsuario} onChange={(e) => setTipoUsuario(e.target.value)} required>
-          <option value="">Selecione o tipo de usuário</option>
+        <label htmlFor="role">Perfil de Usuário</label>
+        <select id="role" value={formData.role} onChange={handleChange} required>
+          <option value="">Selecione</option>
           <option value="juiz">Juiz</option>
-          <option value="cidadao">Cidadão</option>
-          <option value="promotor">Promotor</option>
+          <option value="funcionario_publico">Funcionário Público</option>
         </select>
 
-        <button type="submit" className="auth-button">Registrar</button>
+        <label htmlFor="password">Senha</label>
+        <input
+          type="password"
+          id="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+          placeholder="Digite sua senha"
+        />
+
+        <label htmlFor="confirmPassword">Confirmar Senha</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          required
+          placeholder="Confirme sua senha"
+        />
+
+        <button type="submit" className="auth-button">Cadastrar</button>
       </form>
+      <p className="auth-footer">
+        Já possui uma conta? <span onClick={() => navigate('/login')}>Faça login</span>
+      </p>
     </div>
   );
 };
