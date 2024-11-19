@@ -1,0 +1,149 @@
+/* Estilos principais */
+.casos-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+/* Header */
+.casos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #0056b3;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.casos-header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.nova-pasta {
+  display: flex;
+  gap: 10px;
+}
+
+.nova-pasta input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+.nova-pasta button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.nova-pasta button:hover {
+  background-color: #218838;
+}
+
+/* Main content */
+.casos-main {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* List of pastas */
+.pastas-list {
+  flex: 1;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.pastas-list h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #0056b3;
+}
+
+.pasta-item {
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+.pasta-item:hover {
+  background-color: #e9ecef;
+}
+
+.pasta-item.active {
+  background-color: #0056b3;
+  color: white;
+}
+
+/* Detalhes da pasta */
+.pasta-detalhes {
+  flex: 2;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.pasta-detalhes h2 {
+  font-size: 20px;
+  color: #0056b3;
+}
+
+.pasta-detalhes textarea {
+  flex: 1;
+  resize: none;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.pasta-detalhes button {
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: flex-end;
+}
+
+.pasta-detalhes button:hover {
+  background-color: #004494;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .casos-main {
+    flex-direction: column;
+  }
+
+  .pastas-list,
+  .pasta-detalhes {
+    flex: 1;
+    width: 100%;
+  }
+}
