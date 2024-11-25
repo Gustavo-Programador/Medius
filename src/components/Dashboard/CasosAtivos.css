@@ -1,4 +1,4 @@
-/* Estilos principais */
+/* Estilos gerais */
 .casos-container {
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   color: #333;
 }
 
-/* Header */
+/* Cabeçalho */
 .casos-header {
   display: flex;
   justify-content: space-between;
@@ -45,26 +45,25 @@
   padding: 10px 15px;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .nova-pasta button:hover {
   background-color: #218838;
 }
 
-/* Main content */
+/* Layout principal */
 .casos-main {
   display: flex;
   flex: 1;
-  padding: 20px;
-  gap: 20px;
+  overflow: hidden;
 }
 
-/* List of pastas */
+/* Lista de pastas */
 .pastas-list {
   flex: 1;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-right: 1px solid #ccc;
   padding: 20px;
   overflow-y: auto;
 }
@@ -80,8 +79,8 @@
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  cursor: pointer;
   background-color: #f9f9f9;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
@@ -96,23 +95,28 @@
 
 /* Detalhes da pasta */
 .pasta-detalhes {
-  flex: 2;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  flex: 3;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  background-color: #fff;
+  padding: 20px;
+  overflow-y: auto;
 }
 
-.pasta-detalhes h2 {
-  font-size: 20px;
-  color: #0056b3;
+.detalhes-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.pasta-detalhes textarea {
-  flex: 1;
+/* Seção de notas */
+.notas-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notas-section textarea {
   resize: none;
   padding: 10px;
   font-size: 16px;
@@ -120,7 +124,8 @@
   border-radius: 4px;
 }
 
-.pasta-detalhes button {
+.notas-section button {
+  align-self: flex-end;
   background-color: #0056b3;
   color: white;
   border: none;
@@ -128,11 +133,94 @@
   padding: 10px 15px;
   cursor: pointer;
   font-size: 16px;
-  align-self: flex-end;
+  transition: background-color 0.3s ease;
 }
 
-.pasta-detalhes button:hover {
+.notas-section button:hover {
   background-color: #004494;
+}
+
+/* Notas exibidas */
+.notas-exibidas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nota-item {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.nota-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Upload e arquivos */
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upload-section button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.upload-section button:hover {
+  background-color: #218838;
+}
+
+.arquivos-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.arquivos-section h3 {
+  font-size: 18px;
+  color: #0056b3;
+  margin-bottom: 10px;
+}
+
+.arquivo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.arquivo-item a {
+  text-decoration: none;
+  color: #0056b3;
+}
+
+.arquivo-item button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.arquivo-item button:hover {
+  background-color: #c82333;
 }
 
 /* Responsividade */
@@ -141,9 +229,8 @@
     flex-direction: column;
   }
 
-  .pastas-list,
-  .pasta-detalhes {
-    flex: 1;
-    width: 100%;
+  .pastas-list {
+    border-right: none;
+    border-bottom: 1px solid #ccc;
   }
 }

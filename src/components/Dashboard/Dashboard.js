@@ -1,45 +1,73 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Dashboard.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./Dashboard.css";
 
 const Dashboard = () => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    navigate('/login');
-  };
-
-  const handleCasosAtivos = () => {
-    navigate('/casosativos'); // Caminho corrigido
+  // Função para lidar com navegação
+  const handleNavigate = (path) => {
+    navigate(path);
   };
 
   return (
     <div className="dashboard-container">
-      {/* Header */}
+      {/* Cabeçalho */}
       <header className="dashboard-header">
         <div className="header-title">
           <h1>Plataforma de Gestão Judicial</h1>
         </div>
-        <button onClick={handleLogout} className="logout-button">Sair</button>
+        <button
+          onClick={() => handleNavigate("/login")}
+          className="logout-button"
+        >
+          Sair
+        </button>
       </header>
 
-      {/* Resumo */}
-      <section className="dashboard-summary">
-        <h2>Resumo Geral</h2>
-        <div className="summary-cards">
-          <div className="card" onClick={handleCasosAtivos}>
-            <h3>Casos Ativos</h3>
-            <p>150 casos em andamento.</p>
-            <button className="access-button">Acessar</button>
-          </div>
-          <div className="card">
-            <h3>Documentos Processados</h3>
-            <p>432 documentos analisados este mês.</p>
-          </div>
+      {/* Destaques */}
+      <section className="dashboard-highlights">
+        <h2>Destaques</h2>
+        <div className="highlight-cards">
           <div className="card">
             <h3>Notificações</h3>
-            <p>8 novas notificações pendentes.</p>
+            <p>3 novos prazos vencendo esta semana.</p>
           </div>
+          <div className="card">
+            <h3>Documentos Pendentes</h3>
+            <p>12 documentos aguardando revisão.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Acesso Rápido */}
+      <section className="dashboard-access">
+        <h2>Acesso Rápido</h2>
+        <div className="access-grid">
+          <button
+            onClick={() => handleNavigate("/pesquisadocumentos")}
+            className="access-button"
+          >
+            Pesquisa de Documentos
+          </button>
+          <button
+            onClick={() => handleNavigate("/casosativos")}
+            className="access-button"
+          >
+            Organização de Documentos
+          </button>
+          <button
+            onClick={() => handleNavigate("/consultajurisprudencia")}
+            className="access-button"
+          >
+            Consulta de Jurisprudências
+          </button>
+          <button
+            onClick={() => handleNavigate("/gestaoprazos")}
+            className="access-button"
+          >
+            Gestão de Prazos
+          </button>
         </div>
       </section>
 
@@ -47,30 +75,38 @@ const Dashboard = () => {
       <section className="dashboard-features">
         <h2>Funcionalidades</h2>
         <div className="features-grid">
-          <div className="feature-item" onClick={handleCasosAtivos}>
-            <h4>Casos Ativos</h4>
-            <p>Gerencie e acompanhe casos em andamento.</p>
+          <div
+            className="feature-item"
+            onClick={() => handleNavigate("/pesquisadocumentos")}
+          >
+            <h4>Pesquisa de Documentos</h4>
+            <p>Encontre arquivos importantes relacionados aos casos.</p>
           </div>
-          <div className="feature-item" onClick={() => navigate('/documentos')}>
-            <h4>Documentos</h4>
-            <p>Pesquise e organize documentos judiciais.</p>
+          <div
+            className="feature-item"
+            onClick={() => handleNavigate("/casosativos")}
+          >
+            <h4>Organização de Documentos</h4>
+            <p>Envie, visualize e categorize documentos processuais.</p>
           </div>
-          <div className="feature-item" onClick={() => navigate('/notificacoes')}>
-            <h4>Notificações</h4>
-            <p>Receba atualizações automáticas sobre seus casos.</p>
+          <div
+            className="feature-item"
+            onClick={() => handleNavigate("/consultajurisprudencia")}
+          >
+            <h4>Consulta de Jurisprudências</h4>
+            <p>Acesse precedentes jurídicos e decisões relevantes.</p>
           </div>
-          <div className="feature-item" onClick={() => navigate('/jurisprudencia')}>
-            <h4>Jurisprudência</h4>
-            <p>Acesse decisões importantes e precedentes.</p>
-          </div>
-          <div className="feature-item" onClick={() => navigate('/prazos')}>
-            <h4>Prazos</h4>
-            <p>Controle seus compromissos e prazos processuais.</p>
+          <div
+            className="feature-item"
+            onClick={() => handleNavigate("/gestaoprazos")}
+          >
+            <h4>Gestão de Tarefas e Prazos</h4>
+            <p>Acompanhe compromissos e receba alertas de vencimento.</p>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Rodapé */}
       <footer className="dashboard-footer">
         <p>&copy; 2024 Plataforma de Gestão Judicial. Todos os direitos reservados.</p>
       </footer>
