@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import './CasosAtivos.css';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/casos';
+const API_URL = 'https://back-sjd.vercel.app/api/casos';
 
 const CasosAtivos = () => {
   const [pastas, setPastas] = useState([]);
